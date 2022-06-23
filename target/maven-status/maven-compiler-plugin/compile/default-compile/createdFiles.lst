@@ -1,0 +1,9 @@
+com/pages/ProductPage.class
+base/BaseClass.class
+com/utils/ConfigReader.class
+com/pages/WomenPage.class
+com/pages/PreloginPage.class
+com/pages/LoginPage.class
+com/pages/DressesPage.class
+com/utils/ElementsUtils.class
+com/pages/TShirtPage.class
