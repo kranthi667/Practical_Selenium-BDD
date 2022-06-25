@@ -1,23 +1,24 @@
 package com.pages;
 
 
-import static com.utils.ConfigReader.prop;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import com.utils.ElementsUtils;
+import dataSet.TestData;
+
 
 public class DressesPage {
 
-	static Logger log =LogManager.getLogger();
+
 
 	private WebDriver driver;
 
 	ElementsUtils Utils = new ElementsUtils();
+	TestData getDressesPageData = new TestData();
 
 	private By   dressesPage  =By.xpath("(//a[@title='Dresses'][normalize-space()='Dresses'])[2]");
 			
@@ -25,22 +26,20 @@ public class DressesPage {
 
 	public DressesPage(WebDriver driver) {
 		this.driver = driver;
+		
 
 	}
 
 
-	public void clickondresses() {
+	public void clickOnDresses() {
 
-		WebElement ele1 = driver.findElement(dressesPage);
+		WebElement dressespage = driver.findElement(dressesPage);
 
-		Utils.waitforelemetpresent(ele1);
+		Utils.waitForElemetPresent(dressespage);
 
-		ele1.click();
+		dressespage.click();
 
-		Utils.verifyTitle(prop.getProperty("expectedDressespageTitle"), Utils.getTitle());
-
-
-
+		Utils.verifyTitle(getDressesPageData.getExpectedDressespageTitle(), Utils.getTitle());
 
 	}
 

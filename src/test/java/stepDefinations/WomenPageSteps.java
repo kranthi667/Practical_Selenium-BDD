@@ -11,7 +11,7 @@ import io.cucumber.java.en.Given;
 public class WomenPageSteps {
 	
 	
-	private WomenPage womenpage = new WomenPage(BaseClass.driver);
+	private WomenPage womenpage = new WomenPage(BaseClass.getDriver());
 	
 	Logger log =(Logger) LogManager.getLogger(WomenPageSteps.class);
 	
@@ -19,7 +19,7 @@ public class WomenPageSteps {
 	@Given("Click on Women and verify title")
 	public void verifyTheTitleofWomenPage() {
 			
-		womenpage.clickonWomen();
+		womenpage.clickOnWomen();
 		 log.info("Click on Women and verify title:    PASS");
 	  
 	}

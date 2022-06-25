@@ -14,7 +14,7 @@ public class LoginPageSteps {
 
 	//private static String title;
 	
-	private LoginPage loginPage = new LoginPage(BaseClass.driver);
+	private LoginPage loginPage = new LoginPage(BaseClass.getDriver());
 	Logger log =(Logger) LogManager.getLogger(LoginPageSteps.class);
   
 		
@@ -58,7 +58,7 @@ public class LoginPageSteps {
 	@Then("Verify UserName on screen once Logged IN")
 	public void verifyUserNameOnScreenOnceLoggedIn() {
 		
-		loginPage.Usernameverify();
+		loginPage.UserNameVerify();
 		
 		log.info("Username is Verified:     PASS");
 		

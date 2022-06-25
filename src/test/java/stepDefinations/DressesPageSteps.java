@@ -10,12 +10,12 @@ import io.cucumber.java.en.Given;
 
 public class DressesPageSteps {
 
-	private DressesPage dressespage = new DressesPage(BaseClass.driver);
+	private DressesPage dressespage = new DressesPage(BaseClass.getDriver());
 	Logger log =(Logger) LogManager.getLogger(DressesPageSteps.class);
 	
 	@Given("Click on Dresses and verify title")
 	public void verifyTheTitleofDressesPage() {	
-		dressespage.clickondresses();
+		dressespage.clickOnDresses();
 
 	log.info("Verified the Dresses page Title:   PASS");
 	  

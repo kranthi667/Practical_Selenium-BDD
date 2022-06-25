@@ -1,21 +1,21 @@
 package com.pages;
 
 
-import static com.utils.ConfigReader.prop;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-
 import com.utils.ElementsUtils;
+import dataSet.TestData;
 
 public class WomenPage {
 
 	private WebDriver driver;
 
 
-	ElementsUtils Utils = new ElementsUtils();
+	ElementsUtils utils = new ElementsUtils();
+	TestData getWomensPagedata = new TestData();
 
 	private By womenlink = By.xpath("//a[@title='Women']");
 
@@ -26,14 +26,15 @@ public class WomenPage {
 	}
 
 
-	public void clickonWomen() {
+	public void clickOnWomen() {
 
 		WebElement eleclickonWomen = driver.findElement(womenlink);
 
-		Utils.waitforelemetpresent(eleclickonWomen);
+		utils.waitForElemetPresent(eleclickonWomen);
 
 		eleclickonWomen.click();
-		Utils.verifyTitle(prop.getProperty("expectedWomenpageTitle"), Utils.getTitle());
+		
+		utils.verifyTitle(getWomensPagedata.getExpectedWomenpageTitle(), utils.getTitle());
 
 
 

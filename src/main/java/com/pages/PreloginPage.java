@@ -2,18 +2,21 @@ package com.pages;
 
 import static com.utils.ConfigReader.prop;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.utils.ElementsUtils;
+
+import dataSet.TestData;
 
 public class PreloginPage {
 
 	private WebDriver driver;
 
 
-	ElementsUtils Utils = new ElementsUtils();
+	ElementsUtils utils = new ElementsUtils();
+	TestData getPreLoginPagedata = new TestData();
 
 
 
@@ -26,7 +29,7 @@ public class PreloginPage {
 	private By information =By.xpath("//*[contains(text(),'Information')]");
 	private By myAccount =By.xpath("//a[normalize-space()='My account']");
 	private By product = By.xpath("//*[@id=\"homefeatured\"]/li[1]/div/div[1]/div/a[1]");
-    private By footerlinks=By.xpath("//div[@class='footer-container']");
+	private By footerlinks=By.xpath("//div[@class='footer-container']");
 
 
 
@@ -55,7 +58,7 @@ public class PreloginPage {
 	}
 
 
-	public boolean CallUsNow() {
+	public boolean callUsNow() {
 
 		boolean CallUsNowPresent =driver.findElement(callUsNow).isDisplayed();
 
@@ -64,7 +67,7 @@ public class PreloginPage {
 	}
 
 
-	public boolean Contactus() {
+	public boolean contactus() {
 
 		boolean ContactusPresent =driver.findElement(contactUs).isDisplayed();
 
@@ -72,7 +75,7 @@ public class PreloginPage {
 
 	}	
 
-	public boolean SignIn() {
+	public boolean signIn() {
 
 		boolean SignInPresent =driver.findElement(signIn).isDisplayed();
 
@@ -80,7 +83,7 @@ public class PreloginPage {
 
 	}
 
-	public String PlaceholderText() {
+	public String placeholderText() {
 
 		String PlaceholderTextPresent =driver.findElement(placeholderText).getAttribute("placeholder");
 
@@ -88,9 +91,9 @@ public class PreloginPage {
 
 	}
 
-	public String ExcepectedPlaceholderText() {
+	public String excepectedPlaceholderText() {
 
-		String  ExcPlaceholderText =prop.getProperty("placeHolderText");
+		String  ExcPlaceholderText =getPreLoginPagedata.getPlaceHolderText();
 
 		return ExcPlaceholderText;
 
@@ -98,47 +101,45 @@ public class PreloginPage {
 	}
 
 
-	public void Footer_Scrollbottom()  {
+	public void footer_ScrollBottom()  {
 
-
-
-		Utils.scrollbykeys();
+		utils.scrollWindowBottom(driver);
 
 
 	}
 
 
-	public void Footer_Categories() {
+	public void footer_Categories() {
 
 
 		WebElement Footer_CategoriesPresent = driver.findElement(categories);
 
 		String print = Footer_CategoriesPresent.getText();
 
-		Utils.verifytext(prop.getProperty("Footer_CategoriesPresent"), Footer_CategoriesPresent);
+		utils.verifyText(getPreLoginPagedata.getFooter_CategoriesPresent(), Footer_CategoriesPresent);
 		System.out.println(print);
 
 	}
 
-	public void Footer_Information() {
+	public void footer_Information() {
 
 		WebElement footer_InformationPresent = driver.findElement(information);
 
 		String print = footer_InformationPresent.getText();
 
-		Utils.verifytext(prop.getProperty("footer_InformationPresent"), footer_InformationPresent);
+		utils.verifyText(getPreLoginPagedata.getFooter_InformationPresent(), footer_InformationPresent);
 		System.out.println(print);
 
 	}
 
-	public void Footer_MyAccount() {
+	public void footer_MyAccount() {
 
 
 		WebElement Footer_MyAccountPresent = driver.findElement(myAccount);
 		String print = Footer_MyAccountPresent.getText();
 
 
-		Utils.verifytext(prop.getProperty("Footer_MyAccountPresent"), Footer_MyAccountPresent);
+		utils.verifyText(getPreLoginPagedata.getFooter_MyAccountPresent(), Footer_MyAccountPresent);
 
 		System.out.println(print);
 
@@ -147,14 +148,14 @@ public class PreloginPage {
 	public void verifySublinksWithText() {
 
 
-		Utils.verifySubLinks(footerlinks);
+		utils.verifySubLinks(footerlinks);
 
 	}
 
 
 
 
-	public void  ClickOnProduct() {
+	public void  clickOnProduct() {
 		driver.findElement(product).click();
 	}
 

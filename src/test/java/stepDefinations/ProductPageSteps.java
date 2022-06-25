@@ -12,7 +12,7 @@ import io.cucumber.java.en.Then;
 
 public class ProductPageSteps {
 	
-	private ProductPage productpage = new ProductPage(BaseClass.driver);
+	private ProductPage productpage = new ProductPage(BaseClass.getDriver());
 	
 	Logger log =(Logger) LogManager.getLogger(ProductPageSteps.class);
 
@@ -39,16 +39,16 @@ public class ProductPageSteps {
 	@Then("Verify links for Tweet Share Google+ and Pinterest is displayed")
 	public void verifyLinksForTweetShareGoogleAndPinterestIsDisplayed() {
 	   
-		Assert.assertEquals(productpage.tweetlink(),true);
+		Assert.assertEquals(productpage.tweetLink(),true);
 		
 		log.info("Verify tweetlink is present : PASS ");
-		Assert.assertEquals(productpage.sharelink(),true);
+		Assert.assertEquals(productpage.shareLink(),true);
 		log.info("Verify sharelink is present : PASS ");
 		
-		Assert.assertEquals(productpage.googlelink(),true);
+		Assert.assertEquals(productpage.googleLink(),true);
 		log.info("Verify googlelink is present  : PASS ");
 		
-		Assert.assertEquals(productpage.pinterestlink(),true);
+		Assert.assertEquals(productpage.pinterestLink(),true);
 		log.info("Verify pinterestlink is present  : PASS ");
 		
 		
@@ -66,7 +66,7 @@ public class ProductPageSteps {
 	@Then("Verify More info content is displayed")
 	public void verifyMoreInfoContentIsDisplayed() {
 	    
-		Assert.assertEquals(productpage.moreinfocontent(),true);
+		Assert.assertEquals(productpage.moreInfoContent(),true);
 		log.info("Verify moreinfocontent is present  : PASS ");
 		
 	}

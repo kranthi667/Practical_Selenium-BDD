@@ -1,7 +1,6 @@
 package com.pages;
 
 
-import static com.utils.ConfigReader.prop;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,11 +8,14 @@ import org.openqa.selenium.WebElement;
 
 import com.utils.ElementsUtils;
 
+import dataSet.TestData;
+
 public class TShirtPage {
 
 	private WebDriver driver;
 
-	ElementsUtils Utils = new ElementsUtils();
+	ElementsUtils utils = new ElementsUtils();
+	TestData getTshirtPagedata = new TestData();
 
 
 	private By tShirtPage = By.xpath("(//a[@title='T-shirts'][normalize-space()='T-shirts'])[2]");
@@ -25,15 +27,15 @@ public class TShirtPage {
 	}
 
 
-	public void clickonTshirt()  {
+	public void clickOnTshirt()  {
 
 
 		WebElement ele = driver.findElement(tShirtPage);
 
-		Utils.waitforelemetpresent(ele);
+		utils.waitForElemetPresent(ele);
 
 		ele.click();
-		Utils.verifyTitle(prop.getProperty("expectedTshirtpageTitle"), Utils.getTitle());
+		utils.verifyTitle(getTshirtPagedata.getExpectedTshirtpageTitle(), utils.getTitle());
 
 
 	}

@@ -13,7 +13,7 @@ import io.cucumber.java.en.When;
 
 public class PreloginPageSteps {
 	
-	private PreloginPage preloginPage = new PreloginPage(BaseClass.driver);
+	private PreloginPage preloginPage = new PreloginPage(BaseClass.getDriver());
 	Logger log =(Logger) LogManager.getLogger(PreloginPageSteps.class);
 	
 	@Given("Launch URL")
@@ -45,19 +45,19 @@ public class PreloginPageSteps {
 	@Then("Verify Call us now is displayed along with the valid phone number")
 	public void verifyCallUsNowWithValidNumIsDisplayed() {
 		
-		preloginPage.CallUsNow();
-	   Assert.assertEquals(preloginPage.CallUsNow(), true);
+		preloginPage.callUsNow();
+	   Assert.assertEquals(preloginPage.callUsNow(), true);
 	   log.info("Verify Call us now is displayed : PASS");
 	}
 
 	@Then("Verify Contact us, Sign In is displayed")
 	public void verifyContactAndUsSignInTextIsDisplayed() {
 		
-		preloginPage.Contactus();
-		Assert.assertEquals(preloginPage.Contactus(), true);
+		preloginPage.contactus();
+		Assert.assertEquals(preloginPage.contactus(), true);
 		log.info("Verify Contact us : PASSED ");
-		preloginPage.SignIn();
-		Assert.assertEquals(preloginPage.SignIn(), true);
+		preloginPage.signIn();
+		Assert.assertEquals(preloginPage.signIn(), true);
 		log.info("Verify Sign In : PASSED ");
 	  
 	}
@@ -65,9 +65,9 @@ public class PreloginPageSteps {
 	@When("On Search Text box check placeHolderText")
 	public void VerifyThePlaceHolderTextOnSearchTextBox(){
 		
-	 String actualPlaceholdertext=  preloginPage.PlaceholderText();
+	 String actualPlaceholdertext=  preloginPage.placeholderText();
 	 
-	 Assert.assertEquals(actualPlaceholdertext, preloginPage.ExcepectedPlaceholderText());
+	 Assert.assertEquals(actualPlaceholdertext, preloginPage.excepectedPlaceholderText());
 	  
 	   log.info("On Search Text box check placeHolderText:    PASS");
 	   
@@ -76,7 +76,7 @@ public class PreloginPageSteps {
 	public void scrollToEndOfThePage() {
 		
 		
-		preloginPage.Footer_Scrollbottom();
+		preloginPage.footer_ScrollBottom();
 		log.info("Scroll to end of the page   : PASS");
 	 
 	}
@@ -84,11 +84,11 @@ public class PreloginPageSteps {
 	@Given("Verify three titles “Categories“, “Information”, “My Account” is displayed")
 	public void verifyThreeTitlesCategoriesInformationMyaccountIsDisplayed() {
 	   
-		preloginPage.Footer_Categories();
+		preloginPage.footer_Categories();
 		log.info("Verify Footer Categories  : PASS");
-		preloginPage.Footer_Information();
+		preloginPage.footer_Information();
 		log.info("Verify Footer Information  : PASS ");	
-		preloginPage.Footer_MyAccount();
+		preloginPage.footer_MyAccount();
 		log.info("Verify Footer My Account  : PASS ");
 		
 		
@@ -104,7 +104,7 @@ public class PreloginPageSteps {
 	@Given("Tap on any product")
 	public void tapOnAnyProduct() {
 	   
-		preloginPage.ClickOnProduct();
+		preloginPage.clickOnProduct();
 		log.info("Clicked on product :    PASS");
 		
 	}

@@ -1,18 +1,19 @@
 package com.pages;
 
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.utils.ElementsUtils;
-import static com.utils.ConfigReader.prop;
 
+import  dataSet.TestData;
 public class LoginPage {
 
 
 	private WebDriver driver;
+
+
 
 	private By emailId = By.id("email");
 	private By password = By.id("passwd");
@@ -20,7 +21,8 @@ public class LoginPage {
 	private By signIntab = By.linkText("Sign in");
 	private By usernameveri = By.xpath("//a[@title='View my customer account']/span");
 
-	ElementsUtils Utils = new ElementsUtils();
+	ElementsUtils utils = new ElementsUtils();
+	TestData getLoginPagedata = new TestData();
 
 
 	public LoginPage(WebDriver driver) {
@@ -52,20 +54,14 @@ public class LoginPage {
 
 	public void sginInscreenTitle() {
 
-
-		String et=prop.getProperty("ecpectedTitle");
-
-
-		Utils.verifyTitle(et, Utils.getTitle());
-
-
+		utils.verifyTitle(getLoginPagedata.getExpectedTitle(), utils.getTitle());
 
 	}
 
-	public void Usernameverify() {
+	public void UserNameVerify() {
 
-		WebElement ele =driver.findElement(usernameveri);
-		Utils.verifytext(prop.getProperty("Username"), ele);
+		WebElement usernameveriele =driver.findElement(usernameveri);
+		utils.verifyText(getLoginPagedata.getUsername(), usernameveriele);
 
 	}
 

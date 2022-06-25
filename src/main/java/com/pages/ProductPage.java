@@ -1,15 +1,14 @@
 package com.pages;
 
-import java.awt.AWTException;
-
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
 import com.utils.ElementsUtils;
-import static com.utils.ConfigReader.prop;
+
+import dataSet.TestData;
+
 
 public class ProductPage {
 
@@ -26,7 +25,8 @@ public class ProductPage {
 	private By moreinfo = By.xpath("//div[@class='rte']");
 
 
-	ElementsUtils Utils = new ElementsUtils();
+	ElementsUtils utils = new ElementsUtils();
+	TestData getProductPagedata = new TestData();
 
 
 
@@ -53,16 +53,15 @@ public class ProductPage {
 
 		WebElement productNamePresent =driver.findElement(productName);
 
-		boolean productNameVerify =	Utils.verifytext(prop.getProperty("productName"), productNamePresent);
+		boolean productNameVerify =	utils.verifyText(getProductPagedata.getProductName(), productNamePresent);
 
 		return productNameVerify;
 
 	}
 	public boolean productDescription() {
 
-		Utils.waitforpagetoload();
 
-		boolean productDescriptionVerify =	Utils.textExistPgSource(prop.getProperty("description"),driver);
+		boolean productDescriptionVerify =	utils.textExistPgSource(getProductPagedata.getDescription(),driver);
 
 		return productDescriptionVerify;
 
@@ -71,45 +70,45 @@ public class ProductPage {
 
 	public boolean dataSheet() {
 
-		Utils.scrollbykeys();
+		utils.scrollByKeys();
 		WebElement wb = driver.findElement(dataSheet);
 
-		return Utils.verifytext(prop.getProperty("dataSheet"), wb);
+		return utils.verifyText(getProductPagedata.getDataSheet(), wb);
 
 
 
 	}
 
 
-	public boolean tweetlink () {
+	public boolean tweetLink () {
 
 		boolean tweetlinkPresent =driver.findElement(tweet).isDisplayed();
 
 		return tweetlinkPresent;
 
 	}
-	public boolean sharelink () {
+	public boolean shareLink () {
 
 		boolean SharelinkPresent =driver.findElement(share).isDisplayed();
 
 		return SharelinkPresent;
 
 	}
-	public boolean googlelink () {
+	public boolean googleLink () {
 
 		boolean GooglelinkPresent =driver.findElement(google).isDisplayed();
 
 		return GooglelinkPresent;
 
 	}
-	public boolean pinterestlink () {
+	public boolean pinterestLink () {
 
 		boolean PinterestlinkPresent =driver.findElement(pinterest).isDisplayed();
 
 		return PinterestlinkPresent;
 
 	}
-	public boolean moreinfocontent() {
+	public boolean moreInfoContent() {
 
 		boolean moreinfocontentPresent =driver.findElement(moreinfo).isDisplayed();
 

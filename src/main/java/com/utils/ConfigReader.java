@@ -1,5 +1,6 @@
 package com.utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,22 +17,28 @@ public class ConfigReader {
 	}
 	public static  Properties init_prop() {
 
+
 		prop = new Properties();
 
-		try {
-			FileInputStream ip = new FileInputStream("./src/test/resources/config/config.properties");
-			prop.load(ip);
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+
+		FileInputStream propFile;
+		try {
+			propFile = new FileInputStream(System.getProperty("user.dir")+"//config.properties");
+
+
+
+
+			prop.load(propFile);
+		} catch (IOException e1) {
+
+			e1.printStackTrace();
 		}
+
 
 		return prop;
 
 	}
-
 
 
 }

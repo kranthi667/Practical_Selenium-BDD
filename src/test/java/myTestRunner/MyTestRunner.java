@@ -12,12 +12,10 @@ import io.cucumber.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-		features = {"src/test/resources/AppFeatures/PreloginPage.feature"},
+		features = {"src/test/resources/AppFeatures"},
 		glue = {"stepDefinations", "appHooks"},
-		//plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-		
-	    tags="@Testcase6"
-        	  
+	  plugin = {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+
 
 		)
 

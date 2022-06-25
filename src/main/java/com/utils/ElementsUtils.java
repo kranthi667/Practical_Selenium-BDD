@@ -20,6 +20,8 @@ import base.BaseClass;
 
 public class ElementsUtils extends BaseClass{
 
+
+
 	ElementsUtils utils;
 
 	JavascriptExecutor js ;
@@ -27,40 +29,40 @@ public class ElementsUtils extends BaseClass{
 
 
 
-	public Object scrollwindowbottom(WebDriver driver) {
+	public Object scrollWindowBottom(WebDriver driver) {
 
-		js= (JavascriptExecutor) driver;
+		js= (JavascriptExecutor) BaseClass.getDriver();
 
 		return  js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 
 	}
 
-	public void scrollbykeys() {
+	public void scrollByKeys() {
 
-		Actions a = new Actions(driver);
+		Actions a = new Actions(BaseClass.getDriver());
 		a.sendKeys(Keys.PAGE_DOWN).build().perform();
 
 	}
 
-	public void elementclickwithkeys(WebElement wb) {
+	public void elementClickWithKeys(WebElement wb) {
 
-		utils.waitforpagetoload();
+		utils.waitForPageToLoad();
 
 		wb.sendKeys(Keys.LEFT_CONTROL,Keys.ENTER);
 
 	}
 
 
-	public void waitforpagetoload(){
+	public void waitForPageToLoad(){
 		BaseClass.driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 	}
 
-	public void waitforelemetpresent(WebElement wb){
-		WebDriverWait wait=new WebDriverWait(BaseClass.driver,20);
+	public void waitForElemetPresent(WebElement wb){
+		WebDriverWait wait=new WebDriverWait(BaseClass.getDriver(),20);
 		wait.until(ExpectedConditions.elementToBeClickable(wb));
 	}
 
-	public void waitforelemetvisible(By wb) throws InterruptedException{
+	public void waitForElemetvisible(By wb) throws InterruptedException{
 
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		try {
@@ -75,7 +77,7 @@ public class ElementsUtils extends BaseClass{
 	}
 
 
-	public boolean verifytext(String expectedResult,WebElement wb){
+	public boolean verifyText(String expectedResult,WebElement wb){
 		boolean flag=false;
 		String ActualResult = null;
 		try {
@@ -108,7 +110,7 @@ public class ElementsUtils extends BaseClass{
 		boolean expectedflag = false;
 
 		try {
-			expectedflag = driver.findElement(we).isDisplayed();
+			expectedflag = BaseClass.getDriver().findElement(we).isDisplayed();
 		} catch (NoSuchElementException e) {
 			System.out.println("element is not found:" + we);
 			e.printStackTrace();
@@ -120,12 +122,12 @@ public class ElementsUtils extends BaseClass{
 
 
 	public  String getTitle() {
-		return BaseClass.driver.getTitle();
+		return BaseClass.getDriver().getTitle();
 	}
 
 	public void verifyLinks() {
 
-		List<WebElement> allLinks = driver.findElements(By.tagName("a"));
+		List<WebElement> allLinks = BaseClass.getDriver().findElements(By.tagName("a"));
 
 
 		for(WebElement link:allLinks){
@@ -136,7 +138,7 @@ public class ElementsUtils extends BaseClass{
 
 	public void verifySubLinks(By ele) {
 
-		WebElement footer= driver.findElement(ele); 
+		WebElement footer= BaseClass.getDriver().findElement(ele); 
 		System.out.println(footer.findElements(By.tagName("a")).size()) ;
 		List<WebElement> footlinks = footer.findElements(By.tagName("a"));
 
@@ -148,7 +150,7 @@ public class ElementsUtils extends BaseClass{
 
 
 	public boolean textExistPgSource(String t,WebDriver driver) {
-		if ( driver.getPageSource().contains("Faded short sleeve t-shirt with high neckline")){
+		if ( BaseClass.getDriver().getPageSource().contains("Faded short sleeve t-shirt with high neckline")){
 			System.out.println("Text: " + t + " is present. ");
 			return true;
 		} else {
@@ -158,9 +160,9 @@ public class ElementsUtils extends BaseClass{
 
 	}
 
-	public  void movetoelement(WebElement locator,WebDriver driver)
+	public  void moveToElement(WebElement locator,WebDriver driver)
 	{
-		Actions actions = new Actions(driver);    
+		Actions actions = new Actions(BaseClass.getDriver());    
 		try {
 			actions.moveToElement(locator).build().perform();
 		} catch (NoSuchElementException e) {
